@@ -10,6 +10,8 @@ db = SQLAlchemy(app)
 class Todo(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(100))
+    categories = db.Column(db.String(50))
+    notes = db.Column(db.String(300))
     complete = db.Column(db.Boolean)
 
 

@@ -26,7 +26,9 @@ def index():
 def add():
     # add new item
     title = request.form.get("title")
-    new_todo = Todo(title=title, complete=False)
+    categories = request.form.get("category")
+    notes = request.form.get("notes")
+    new_todo = Todo(title=title, categories=categories, notes=notes, complete=False)
     db.session.add(new_todo)
     db.session.commit()
     return redirect(url_for("index"))
@@ -41,7 +43,6 @@ def update(todo_id):
 
 
 @app.route("/delete/<int:todo_id>")
-
 def delete(todo_id):
     # add new item
     todo = Todo.query.filter_by(id=todo_id).first()
@@ -55,3 +56,5 @@ if __name__ == "__main__":
         db.create_all()
 
     app.run(debug=True)
+
+Still not done

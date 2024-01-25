@@ -19,14 +19,17 @@ class Todo(db.Model):
 def index():
     # show all todos
     todo_list = Todo.query.all()
-    return render_template("base.html", todo_list=todo_list)
+    print(todo_list)
+    return render_template('base.html', todo_list=todo_list)
+
+
 
 
 @app.route("/add", methods=["POST"])
 def add():
     # add new item
     title = request.form.get("title")
-    categories = request.form.get("category")
+    categories = request.form.get("categories")
     notes = request.form.get("notes")
     new_todo = Todo(title=title, categories=categories, notes=notes, complete=False)
     db.session.add(new_todo)

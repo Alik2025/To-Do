@@ -9,6 +9,7 @@
 </head>
 <body>
 
+
 <h1>Todo App</h1>
 
 <form action="/add" method="post">
@@ -16,7 +17,7 @@
         <label >Todo Title</label>
         <label>
             <input type="text" name="title" placeholder="Enter Todo..." >
-            <input type="text" name="category" placeholder="Enter category...">
+            <input type="text" name="categories" placeholder="Enter category...">
             <input type="text" name="notes" placeholder="Enter notes...">
 
         </label>
@@ -26,9 +27,9 @@
 </form>
 
     {% for todo in todo_list %}
-        <p> {{ todo.id }} | {{ todo.title }}</p>
+        <p> {{ todo.id }} | {{ todo.title }} | {{todo.categories}} | {{todo.notes}}</p>
 
-        {% if todo.complete == False %}
+        {% if todo.complete == False %}}
             <span>Not Complete</span>
         {% else %}}
             <span>Complete</span>
